@@ -8,9 +8,10 @@
       <title>Welcome to Microblog</title>
       {% endif %}
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+      <script src="{{ url_for('static', filename='main.js') }}"></script>
     </head>
     <body>
-        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
         <div>Microblog: <a href="/index">Home</a></div>
         <hr>
         {% block content %}{% endblock %}
