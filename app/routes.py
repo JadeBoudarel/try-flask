@@ -16,3 +16,12 @@ def index():
         }
     ]
     return render_template('index.html', title='Home', user=user, posts=posts)
+
+@app.route('/coucou')
+def coucou():
+    mon_user={'username':'Richard'}
+    mes_posts=[ {
+            'author': {'username': 'TonTon'},
+            'body': 'Bonjour'
+        }]
+    return render_template('coucou.html' , title='coucou' , user=mon_user ,posts=mes_posts)
