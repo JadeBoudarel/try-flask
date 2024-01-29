@@ -1,5 +1,8 @@
-from flask import render_template
+import os
+
+from flask import render_template, jsonify
 from app import app
+import pandas as pd
 
 @app.route('/')
 @app.route('/index')
@@ -29,4 +32,16 @@ def coucou():
 @app.route('/velo_data')
 def velo_data():
 
-    return render_template('data_velo.html', title='data_velo')
+    csv_df = pd.read_csv("./parcours.csv", sep=';', index_col='date', parse_dates=True, dayfirst=True)
+    my_newindex = pd.date_range('2022-11-27', end='2023-03-25', freq='D')
+    csv_df_reindexed = csv_df.reindex(my_newindex, fill_value=0)
+
+    velo_datas = []
+    for index, row in csv_df_reindexed.iterrows():
+        my_line = {}
+        my_line['x'] = index.strftime('%Y-%m-%d')
+        my_line['y'] = row['km']
+        velo_datas.append(my_line)
+
+
+    return(jsonify(velo_datas),201)
