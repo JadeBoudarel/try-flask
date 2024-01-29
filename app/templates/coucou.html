@@ -9,4 +9,16 @@
 
     <button type="button" id="btn1">coucou</button>
 
+<script>
+    $( document ).ready(function() {
+
+    $( "#btn1" ).click(function( event ) {
+
+        alert( "im win" );
+
+        event.preventDefault();
+    });
+   });
+</script>
+
 {% endblock %}
