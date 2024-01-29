@@ -1,5 +1,3 @@
-from typing import Hashable
-
 from flask import render_template, jsonify
 from app import app
 import pandas as pd
@@ -34,7 +32,6 @@ def coucou():
 
 @app.route('/velo_data')
 def velo_data():
-    from datetime import date
     csv_df = pd.read_csv("./parcours.csv", sep=';', index_col='date', parse_dates=True, dayfirst=True)
     my_newindex = pd.date_range('2022-11-27', end='2023-03-25', freq='D')
     csv_df_reindexed = csv_df.reindex(my_newindex, fill_value=0)
