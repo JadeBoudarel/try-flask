@@ -25,3 +25,8 @@ def coucou():
             'body': 'Bonjour'
         }]
     return render_template('coucou.html' , title='coucou' , user=mon_user ,posts=mes_posts)
+
+@app.route('/velo_data')
+def velo_data():
+
+    return render_template('data_velo.html', title='data_velo')
