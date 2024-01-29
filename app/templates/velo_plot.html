@@ -3,26 +3,50 @@
 {% block content %}
 
 <div id="content"></div>
+<div>
+  <canvas id="myChart"></canvas>
+</div>
 
 <script>
 
   function draw_graph( data ){
-      // 1- get dom element '#myChart'
-      // -----------------------------
+   const ctx = $('#myChart');
 
-      // 2- build chart_data
-      // --------------------
+  new Chart(ctx, {
+  type: 'bar',
+  data: {
 
-      //const existingData = {
-      // datasets: [{
-      //   label: 'distance parcourue en Km',
-      //   data: data .........
+    datasets: [{
+      label: '',
+      data: data,
+      borderWidth: 1
+    }]
+  },
+  options: {
+        scales: {
 
-     // 3- let chart = new Chart ......
-     // -------------------------------
+          x: {
+
+          title: {
+            display: true,
+            text: 'Date'
+          },
+        },
+        y: {
+          beginAtZero: true,
+          max: 100,
+          title: {
+            display: true,
+            text: 'Kilomètres',
+          },
+        },
+        }
+      }
+  });
+
 
         const formattedData = JSON.stringify(data, null, 2);
-        document.getElementById('content').innerHTML = `<pre>${formattedData}</pre>`;
+        $('#content').innerHTML = `<pre>${formattedData}</pre>`;
   }
 
  $( document ).ready(function() {
