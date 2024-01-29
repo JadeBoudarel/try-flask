@@ -10,13 +10,14 @@ $( document ).ready(function() {
 
 
 
-   fetch('../static/data.json')
+   fetch('/velo_data')
   .then(response => response.json())
   .then(data => {
     const formattedData = JSON.stringify(data, null, 2);
 
 
         document.getElementById('content').innerHTML = `<pre>${formattedData}</pre>`;
+
       })
 
 

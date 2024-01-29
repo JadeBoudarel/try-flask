@@ -37,6 +37,8 @@ def velo_data():
     csv_df_reindexed = csv_df.reindex(my_newindex, fill_value=0)
 
     velo_datas = []
+
+
     for index, row in csv_df_reindexed.iterrows():
         my_line = {}
         my_line['x'] = index.strftime('%Y-%m-%d')
@@ -45,3 +47,7 @@ def velo_data():
 
 
     return(jsonify(velo_datas),201)
+
+@app.route('/velo_plot')
+def velo_plot():
+    return render_template(template_name_or_list='data_velo.html',title='velo_plot')
