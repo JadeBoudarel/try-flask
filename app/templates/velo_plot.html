@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="content"></div>
+
+<script>
+
+  function draw_graph( data ){
+      // 1- get dom element '#myChart'
+      // -----------------------------
+
+      // 2- build chart_data
+      // --------------------
+
+      //const existingData = {
+      // datasets: [{
+      //   label: 'distance parcourue en Km',
+      //   data: data .........
+
+     // 3- let chart = new Chart ......
+     // -------------------------------
+
+        const formattedData = JSON.stringify(data, null, 2);
+        document.getElementById('content').innerHTML = `<pre>${formattedData}</pre>`;
+  }
+
+ $( document ).ready(function() {
+    // Get json from local url, and call the draw_graph method with returned data
+    fetch('/velo_data')
+      .then( response => response.json() )
+      .then( draw_graph );
+});
+
+</script>
+{% endblock %}

@@ -52,10 +52,4 @@ def velo_data():
 
 @app.route('/velo_plot')
 def velo_plot():
-    return render_template(template_name_or_list='data_velo.html', title='velo_plot')
-
-
-@app.route('/velo_graph')
-def velo_graph():
-    return ("hello")
-    # return render_template()
+    return render_template(template_name_or_list='velo_plot.html', title='velo_plot')
