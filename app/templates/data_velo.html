@@ -4,15 +4,13 @@
 
 <div id="content"></div>
 <script>
-   fetch('/velo_data')
-  .then(response => response.json())
-  .then(data => {
-    const formattedData = JSON.stringify(data, null, 2);
-
-
+  fetch('/velo_data')
+      .then(response => {
+        data = response.json();
+        const formattedData = JSON.stringify(data, null, 2);
         document.getElementById('content').innerHTML = `<pre>${formattedData}</pre>`;
-
-      })
+      }
+   );
 
 </script>
 {% endblock %}
