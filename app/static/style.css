@@ -1,4 +1,4 @@
-html { font-family: sans-serif; background: #dd0808; padding: 1rem; }
+html { font-family: sans-serif; background: #59585a; padding: 1rem; }
 body { max-width: 960px; margin: 0 auto; background: white; }
 h1 { font-family: serif; color: #377ba8; margin: 1rem 0; }
 a { color: #377ba8; }
@@ -25,3 +25,5 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 input.danger { color: #cc2f2e; }
 input[type=submit] { align-self: start; min-width: 10em; }
 #btn1{background-color: purple;}
+a{text-decoration: none; color: rgb(255, 149, 232);}
+a:hover{ text-decoration: underline; color: aquamarine;}

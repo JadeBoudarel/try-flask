@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, {{ user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+<h1>lien vers pages</h1>
+
+<a href="http://127.0.0.1:5000/coucou"><h2>=>coucou</h2></a>
+
+<a href="http://127.0.0.1:5000/velo_data"><h2>=>velo data</h2></a>
+
+<a href="http://127.0.0.1:5000/velo_plot"><h2>=>velo plot</h2></a>
 {% endblock %}
