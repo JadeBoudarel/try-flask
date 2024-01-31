@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<nav class="navbar bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand text-light">Navbar</a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+
+
+
+
+        <div class="container text-center" style="padding: 1rem;">
+             <div class="row" style="gap:3rem;">
+
+                <div class="card bg-primary" style="width: 18rem;">
+                    <div class="col ">Column</div>
+                    <hr>
+                    <div class="card-body">
+                        <a href="#" class="text-dark">Go </a>
+                    </div>
+                </div>
+                <div class="card bg-secondary" style="width: 18rem;">
+                    <div class="col">Column</div>
+                    <hr>
+                    <div class="card-body">
+                        <a href="#" class="text-dark">Go </a>
+                    </div>
+                </div>
+                <div class="card bg-success" style="width: 18rem;">
+                    <div class="col">Column</div>
+                    <hr>
+                    <div class="card-body">
+                        <a href="#" class="text-dark">Go </a>
+                    </div>
+                </div>
+                <div class="card bg-danger" style="width: 18rem;">
+                    <div class="col">Column</div>
+                    <hr>
+                    <div class="card-body">
+                        <a href="#" class="text-dark">Go </a>
+                    </div>
+                </div>
+
+             </div>
+        </div>
+
+
+
+            <div class="row justify-content-center" style="gap:3rem;">
+                <div class="card text-center" style="width:48vw;">
+                    <div class="col">Graph Line</div>
+                    <hr>
+                    <div class="card-body">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                </div>
+
+                <div class="card text-center" style="width:48vw;">
+                    <div class="col">Graph Bar</div>
+                    <hr>
+                    <div class="card-body">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+<script>
+
+
+
+  function draw_graph( data ){
+   const ctx = $('#myChart');
+
+  new Chart(ctx, {
+  type: 'bar',
+  data: {
+
+    datasets: [{
+      label: '',
+      data: data,
+      borderWidth: 1
+    }]
+  },
+  options: {
+        scales: {
+
+          x: {
+
+          title: {
+            display: true,
+            text: 'Date'
+          },
+        },
+        y: {
+          beginAtZero: true,
+          max: 100,
+          title: {
+            display: true,
+            text: 'Kilomètres',
+          },
+        },
+        }
+      }
+  });
+
+
+        const formattedData = JSON.stringify(data, null, 2);
+        $('#content').innerHTML = `<pre>${formattedData}</pre>`;
+  }
+
+ $( document ).ready(function() {
+    // Get json from local url, and call the draw_graph method with returned data
+    fetch('/velo_data')
+      .then( response => response.json() )
+      .then( draw_graph );
+});
+
+
+
+      const ctx = $('#myChart2');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: 'line',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+</script>
+
+  {% endfor %}

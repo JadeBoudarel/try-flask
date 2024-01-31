@@ -50,3 +50,7 @@ def velo_data():
 @app.route('/velo_plot')
 def velo_plot():
     return render_template(template_name_or_list='velo_plot.html', title='velo_plot')
+
+@app.route('/bootstrap')
+def bootstrap():
+    return render_template(template_name_or_list='bootstrap.html', title='bootstrap')
